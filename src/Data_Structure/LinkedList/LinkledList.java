@@ -3,49 +3,69 @@ package Data_Structure.LinkedList;
 import java.util.LinkedList;
 
 public class LinkledList {
-	Node head;
+
 	public class Node {
 		int data;
 		Node next;
-		
+
 		public Node(int data) {
-			
+
 			this.data = data;
 			this.next = null;
 		}
 	}
-	public void addFirst(int data) {
+
+	// Represent the head and tail of the singly linked list
+	public Node head = null;
+	public Node tail = null;
+
+	// addNode() will add a new node to the list
+	public void addNode(int data) {
+		// Create a new node
 		Node newNode = new Node(data);
-		if(head==null) {
-			head=newNode;
-			return;
+
+		// Checks if the list is empty
+		if (head == null) {
+			// If list is empty, both head and tail will point to new node
+			//head = newNode;
+			//tail = newNode;
+		} else {
+			// newNode will be added after tail such that tail's next will point to newNode
+			tail.next = newNode;
+			// newNode will become new tail of the list
+			tail = tail.next;
 		}
-		newNode.next = head;
-		head= newNode;
-	} 
-	
+	}
+
+	// display() will display all the nodes present in the list
 	public void display() {
-		
-		if(head==null) {
+		// Node current will point to head
+		Node current = head;
+
+		if (head == null) {
 			System.out.println("List is empty");
 			return;
 		}
-		Node currNode = head;
-		while(currNode.next!=null) {
-			System.out.println(currNode.data + "->");
-			currNode = currNode.next;
+		System.out.println("Nodes of singly linked list: ");
+		while (current != null) {
+			// Prints each node by incrementing pointer
+			System.out.print(current.data + "->");
+
+			current = current.next;
 		}
-		
-	}
-	public static void main(String[] args) {
-		LinkledList linkedlist = new LinkledList();
-		linkedlist.addFirst(70);
-		linkedlist.addFirst(30);
-		linkedlist.addFirst(56);
-		
-		linkedlist.display();
-		System.out.println("heelo woeldl");
-		
+		System.out.println();
 	}
 
+	public static void main(String[] args) {
+
+		LinkledList List = new LinkledList();
+
+		// Add nodes to the list
+		List.addNode(56);
+		List.addNode(30);
+		List.addNode(70);
+
+		// Displays the nodes present in the list
+		List.display();
+	}
 }
