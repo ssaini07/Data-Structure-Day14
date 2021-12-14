@@ -7,6 +7,7 @@ public class Runner {
 		list.insert(56);
 		list.insert(70);
 		list.insertBetween(1, 30);
+		list.deleteFirst(0);
 		list.show();
 	}
 
