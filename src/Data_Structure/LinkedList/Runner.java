@@ -8,12 +8,11 @@ public class Runner {
 		list.insert(40);
 		list.insert(30);
 		list.insert(56);
+		System.out.println("Linked List Before Sorting ");
 		list.show();
-		list.size();
-		list.deleteNode(40);
+		list.sorting();
+		System.out.println("Linked List After Sorting");
 		list.show();
-		list.size();
-
 	}
 
 }
