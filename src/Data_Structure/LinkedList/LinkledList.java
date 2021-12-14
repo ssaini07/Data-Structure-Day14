@@ -15,26 +15,17 @@ public class LinkledList {
 
 	}
 
-	// search node
-	public void searchNode(int data) {
-		int index = 0;
-		Node currNode = head;
-
-		if (head == null) {
-			System.out.println("List is empty");
+	// insert after 30
+	public void insertAfter(int index, int data) {
+		Node node = new Node(data);
+		node.data = data;
+		node.next = null;
+		Node n = head;
+		for (int i = 0; i < index; i++) {
+			n = n.next;
 		}
-
-		else {
-			while (currNode != null) {
-				index++;
-				if (currNode.data == data) {
-					System.out.println("Element is present at " + index + "position");
-					return;
-				} else {
-					currNode = currNode.next;
-				}
-			}
-		}
+		node.next = n.next;
+		n.next = node;
 	}
 
 	// show method
