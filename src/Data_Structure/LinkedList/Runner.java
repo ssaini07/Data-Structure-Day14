@@ -7,9 +7,9 @@ public class Runner {
 		list.insert(70);
 		list.insert(30);
 		list.insert(56);
-		list.deleteLast();
+		list.searchNode(30);
 		list.show();
-		
+
 	}
 
 }

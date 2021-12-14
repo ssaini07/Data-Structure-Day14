@@ -15,25 +15,26 @@ public class LinkledList {
 
 	}
 
-	// delete at last
+	// search node
+	public void searchNode(int data) {
+		int index = 0;
+		Node currNode = head;
 
-	public void deleteLast() {
 		if (head == null) {
-			System.out.println("The list is empty: ");
-			return;
+			System.out.println("List is empty");
 		}
-		if (head.next == null) {
-			head = null;
-			return;
-		}
-		Node secondLast = head;
-		Node lastNode = head.next;
-		while (lastNode.next != null) {
-			lastNode = lastNode.next;
-			secondLast = secondLast.next;
 
+		else {
+			while (currNode != null) {
+				index++;
+				if (currNode.data == data) {
+					System.out.println("Element is present at " + index + "position");
+					return;
+				} else {
+					currNode = currNode.next;
+				}
+			}
 		}
-		secondLast.next = null;
 	}
 
 	// show method
@@ -45,5 +46,4 @@ public class LinkledList {
 		}
 		System.out.println("Null");
 	}
-
 }
