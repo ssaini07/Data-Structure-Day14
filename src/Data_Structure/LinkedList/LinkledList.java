@@ -3,43 +3,37 @@ package Data_Structure.LinkedList;
 public class LinkledList {
 	Node head;
 
+	// insert at first
 	public void insert(int data) {
-		Node node = new Node();
-		node.data = data;
-		node.next = null;
-
+		Node newNode = new Node(data);
 		if (head == null) {
-			head = node;
+			head = newNode;
 		} else {
-			Node n = head;
-			while (n.next != null) {
-				n = n.next;
-			}
-			n.next = node;
+			newNode.next = head;
+			head = newNode;
 		}
+
 	}
 
-	// Insert between
-	public void insertBetween(int index, int data) {
-		Node node = new Node();
-		node.data = data;
-		node.next = null;
+	// delete at last
 
-		Node n = head;
-		for (int i = 0; i < index - 1; i++) {
-			n = n.next;
+	public void deleteLast() {
+		if (head == null) {
+			System.out.println("The list is empty: ");
+			return;
 		}
-		node.next = n.next;
-		n.next = node;
-	}
-	
-	//delete at first place
-	
-	public void deleteFirst(int index) {
-		if(index==0) {
-			head = head.next;
+		if (head.next == null) {
+			head = null;
+			return;
 		}
+		Node secondLast = head;
+		Node lastNode = head.next;
+		while (lastNode.next != null) {
+			lastNode = lastNode.next;
+			secondLast = secondLast.next;
 
+		}
+		secondLast.next = null;
 	}
 
 	// show method
@@ -49,6 +43,7 @@ public class LinkledList {
 			System.out.print(node.data + "->");
 			node = node.next;
 		}
-
+		System.out.println("Null");
 	}
+
 }
