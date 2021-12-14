@@ -1,71 +1,44 @@
 package Data_Structure.LinkedList;
 
-import java.util.LinkedList;
-
 public class LinkledList {
+	Node head;
 
-	public class Node {
-		int data;
-		Node next;
+	public void insert(int data) {
+		Node node = new Node();
+		node.data = data;
+		node.next = null;
 
-		public Node(int data) {
-
-			this.data = data;
-			this.next = null;
-		}
-	}
-
-	// Represent the head and tail of the singly linked list
-	public Node head = null;
-	public Node tail = null;
-
-	// addNode() will add a new node to the list
-	public void addNode(int data) {
-		// Create a new node
-		Node newNode = new Node(data);
-
-		// Checks if the list is empty
 		if (head == null) {
-			// If list is empty, both head and tail will point to new node
-			//head = newNode;
-			//tail = newNode;
+			head = node;
 		} else {
-			// newNode will be added after tail such that tail's next will point to newNode
-			tail.next = newNode;
-			// newNode will become new tail of the list
-			tail = tail.next;
+			Node n = head;
+			while (n.next != null) {
+				n = n.next;
+			}
+			n.next = node;
 		}
 	}
-
-	// display() will display all the nodes present in the list
-	public void display() {
-		// Node current will point to head
-		Node current = head;
-
-		if (head == null) {
-			System.out.println("List is empty");
-			return;
-		}
-		System.out.println("Nodes of singly linked list: ");
-		while (current != null) {
-			// Prints each node by incrementing pointer
-			System.out.print(current.data + "->");
-
-			current = current.next;
-		}
-		System.out.println();
+	
+	//Insert between
+	public void insertBetween(int index, int data)
+	{
+		Node node = new Node();
+		node.data = data;
+		node.next = null;
+        Node n = head;
+        for(int i=0; i<index-1; i++) {
+        	n = n.next;
+        }
+        node.next=n.next;
+        n.next=node;
 	}
+	// show method
+	public void show() {
+		Node node = head;
+		while (node != null) {
+			System.out.print(node.data + "->");
+			node = node.next;
+		}
 
-	public static void main(String[] args) {
-
-		LinkledList List = new LinkledList();
-
-		// Add nodes to the list
-		List.addNode(56);
-		List.addNode(30);
-		List.addNode(70);
-
-		// Displays the nodes present in the list
-		List.display();
 	}
 }
